@@ -1,0 +1,23 @@
+
+language: php
+
+php:
+  - 7.0
+  - 7.1
+
+env:
+  matrix:
+    - DEPENDENCIES="--prefer-lowest --prefer-stable"
+    - DEPENDENCIES=""
+
+before_script:
+  - composer self-update
+  - composer update -o $DEPENDENCIES
+
+script:
+  - vendor/bin/phpunit --coverage-clover ./clover.xml
+  - vendor/bin/php-cs-fixer fix --dry-run -vv
+
+after_script:
+  - if [ "$TRAVIS_PHP_VERSION" = "7.1" ]; then wget https://scrutinizer-ci.com/ocular.phar; fi
+  - if [ "$TRAVIS_PHP_VERSION" = "7.1" ]; then php ocular.phar code-coverage:upload --format=php-clover ./clover.xml; fi
