@@ -15,7 +15,6 @@
   "require" : {
     "php" : "~7.0",
     
-    "zendframework/zend-ldap": "^2.7.1",
     "elasticsearch/elasticsearch": "^5.1"
   },
   
