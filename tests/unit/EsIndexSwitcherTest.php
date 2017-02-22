@@ -10,7 +10,7 @@ use Elasticsearch\Namespaces\CatNamespace;
 use ReflectionMethod;
 
 /**
- * @covers EsIndexSwitcher
+ * @covers \EsIndexSwitcher\EsIndexSwitcher
  */
 final class EsIndexSwitcherTest extends TestCase
 {
